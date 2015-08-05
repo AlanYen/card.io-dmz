@@ -372,7 +372,7 @@ DMZ_INTERNAL void expiry_string_to_expiry_month_and_year(char *expiry_string, Gr
     struct tm *time_struct = localtime(&now);
     int current_year = time_struct->tm_year + 1900;
     int current_month = time_struct->tm_mon + 1;
-    if (full_year < current_year + 5
+    if (full_year <= current_year + 8
         && (full_year > current_year || (full_year == current_year && month >= current_month))
         ) {
       *expiry_month = month;
@@ -384,7 +384,7 @@ DMZ_INTERNAL void expiry_string_to_expiry_month_and_year(char *expiry_string, Gr
       if (year > 60) {
         full_year= year + 1900;
       }
-      if (full_year < current_year + 5) {
+      if (full_year <= current_year + 8) {
         *expiry_month = month;
         *expiry_year = full_year;
       }
